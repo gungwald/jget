@@ -1,9 +1,12 @@
 package com.accumulatorx.jget;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLConnection;
 
 public class JGet {
 
@@ -26,17 +29,39 @@ public class JGet {
 	}
 
 	private void get(String url) throws IOException {
-		URL remoteUrl = new URL(url);
-		InputStream in = remoteUrl.openStream();
-		try {
-			byte[] buffer = new byte[8192];
-			int count;
-			while ((count = in.read(buffer)) > 0) {
-				System.out.write(buffer, 0, count);
-			}
-		} finally {
-			close(in);
-		}
+        get(new URL(url));
+	}
+    
+	private void get(URL url) throws IOException {
+        URLConnection conn = url.openConnection();
+        if (conn.getContentType().startsWith("text/")) {
+            BufferedReader textResponseReader = null;
+            try {
+            	textResponseReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String line;
+                while ((line = textResponseReader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            }
+            finally {
+            	close(textResponseReader);
+            }
+        }
+        else {
+            BufferedInputStream binaryResponseReader = null;
+            try {
+            	binaryResponseReader = new BufferedInputStream(conn.getInputStream());
+                byte[] buffer = new byte[8192]; // OS buffer is usually 2048.
+                int count;
+                while ((count = binaryResponseReader.read(buffer)) != -1) {
+                    System.out.write(buffer, 0, count);
+                }
+            }
+            finally {
+            	close(binaryResponseReader);
+            }
+        }
+        System.out.flush();
 	}
 
 	public void close(Closeable c) {
