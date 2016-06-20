@@ -6,7 +6,8 @@ version = '1.0'
 jar {
     manifest {
         attributes 'Implementation-Title': 'JGet',
-                   'Implementation-Version': version
+                   'Implementation-Version': version,
+		   'Main-Class': 'com.accumulatorx.jget.JGet'
     }
 }
 
