@@ -29,7 +29,7 @@ public class JGet {
 	}
 
 	private void get(String url) throws IOException {
-        if (! url.matches("[a-z]+:/")) {
+        if (! url.matches("^\\w+\\:\\/.*$")) {
             // No protocol. Add default HTTP protocol.
         	url = "http://" + url;
         }
