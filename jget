@@ -2,7 +2,7 @@
 
 # Script to launch jget-x.x.jar from the command line.
 
-APP=jget
+APP=`basename "$0"`
 VIRGIN=1.0
 JAR=$APP-$VIRGIN.jar 
 
@@ -16,7 +16,8 @@ TOP_DIR=`dirname "$BIN_DIR"`
 LIB_DIR="$TOP_DIR"/lib
 FOUND=false
 
-for DIR in "$TOP_DIR"/share/java "$LIB_DIR" "$HOME"/git/jget/build/libs
+# Search for jars in likely places.
+for DIR in "$TOP_DIR"/share/java "$LIB_DIR" "$HOME"/git/"$APP"/build/libs
 do
 	ABS_JAR="$DIR"/"$JAR"
 	if [ -f "$ABS_JAR" ]
