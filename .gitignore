@@ -21,3 +21,6 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 *.class
+
+# Vim stuff
+*.swp
