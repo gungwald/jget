@@ -65,7 +65,7 @@ rem Determine the directory this script is in and then remove the trailing
 rem backslash.
 set binDir=%~dp0
 set binDir=%binDir:~0,-1%
-set jarName=%~n0.jar
+set jarName=%~n0-1.0.jar
 set jarSearchDirs="%binDir%" "%binDir%\..\lib" "%USERPROFILE%\lib" "%USERPROFILE%\Documents\lib" "%USERPROFILE%\Dropbox\lib"
 set javaSearchDirs="C:\j2sdk1.4*" "C:\j2sdk1.5*" "C:\Program Files (x86)\Java\jre*" "C:\Program Files (x86)\Java\jdk*" "C:\Program Files\Java\jre*" "C:\Program Files\Java\jdk*"
 
