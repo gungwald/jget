@@ -1,6 +1,6 @@
 # JGet
 
-Simple Java program to download files similar to wget. But, it is much easier to get it working than curl or wget.
+Simple Java program to download files similar to wget. But, it is much easier to compile and install than curl or wget.
 All you need is Java.
 
 If JGet is compiled with Java 1.1 it can work on very old systems that do not have wget or curl installed. These
@@ -27,3 +27,5 @@ Use the build-with-java-1.x scripts to build classes/JGet.class
 ## Issues
 
 Java 1.1 didn't have support for https so it will not work if your running with Java 1.1.
+
+![Screenshot](screenshot-win10.png)
