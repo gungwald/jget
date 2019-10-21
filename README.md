@@ -19,3 +19,11 @@ you can run it like this:
     java -classpath . JGet http://syncterm.bbsdev.net/syncterm.zip 
    
 The dot is important. It specifies that JGet.class is to be found in the current directory.
+
+## Building
+
+Use the build-with-java-1.x scripts to build classes/JGet.class
+
+## Issues
+
+Java 1.1 didn't have support for https so it will not work if your running with Java 1.1.
