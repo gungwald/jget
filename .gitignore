@@ -24,3 +24,4 @@ gradle-app.setting
 
 # Vim stuff
 *.swp
+/.README.md.html

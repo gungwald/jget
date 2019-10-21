@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo This will only generate a Java 1.1 class file if javac 1.4 is used.
+
+if [ -n "$JAVA_HOME" ]
+then
+	JAVAC="$JAVA_HOME"/bin/javac
+else
+	JAVAC=javac
+fi
+
+echo Compiling with $JAVAC
+"$JAVAC" -sourcepath src -d classes -g -target 1.1 JGet.java

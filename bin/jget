@@ -1,0 +1,35 @@
+#!/bin/sh
+
+MAIN_CLASS=JGet
+
+MY_DIR=`dirname "$0"`
+if [ "$MY_DIR" = "." ]
+then
+    MY_DIR=`pwd`
+fi
+CLS_DIR=`dirname "$MY_DIR"`/classes
+
+# Search for main class file
+unset CLS_PATH
+for DIR in `pwd` "$MY_DIR" "$CLS_DIR"
+do
+    if [ -f "$DIR"/$MAIN_CLASS.class ]
+    then
+        CLS_PATH="$DIR"
+        break
+    fi
+done
+if [ -z "$CLS_PATH" ]
+then
+    echo Main class $MAIN_CLASS could not be found. 1>&2
+    exit 1
+fi
+
+if [ -n "$JAVA_HOME" ]
+then
+    JAVA="$JAVA_HOME"/bin/java
+else
+    JAVA=java
+fi
+
+"$JAVA" -classpath "$CLS_PATH" $MAIN_CLASS
