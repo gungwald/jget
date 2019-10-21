@@ -28,4 +28,6 @@ Use the build-with-java-1.x scripts to build classes/JGet.class
 
 Java 1.1 didn't have support for https so it will not work if your running with Java 1.1.
 
+## Windows 10 Screenshot
+
 ![Screenshot](screenshot-win10.png)
