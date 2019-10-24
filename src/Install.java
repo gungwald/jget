@@ -1,8 +1,13 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Install {
+    
+    public static final int YES = 0;
+    public static final int NO = 1;
+    public static final int QUIT = 2;
     
     protected static BufferedReader stdin;
 
@@ -20,14 +25,27 @@ public class Install {
         }
     }
     
+    public int askUserYesNoQuestion(String question) throws IOException {
+        String userResponse = null;
+        int answer = -1;
+        while (answer < 0) {
+            System.out.print(question + " (y/n) ");
+            userResponse = stdin.readLine().trim().toLowerCase();
+            if (userResponse.equals("y")) {
+                answer = YES;
+            } else if (userResponse.equals("n")) {
+                answer = NO;
+            } else if (userResponse.equals("q")) {
+                answer = QUIT;
+            }
+        }
+        return answer;
+    }
+    
     public void install() {
         
         
         
-        String userResponse = null;
-        while (userResponse == null && !userResponse.equals("y") && !userResponse.equals("n")) {
-            System.out.print("Install for all users or just for this user? (y/n) ");
-            userResponse = stdin.readLine().trim().toLowerCase();
     }
 
 }
