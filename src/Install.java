@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -42,8 +41,12 @@ public class Install {
         return answer;
     }
     
-    public void install() {
+    public void install() throws IOException {
         
+        int answer = askUserYesNoQuestion("Install for all users or just this user?");
+        if (answer == YES) {
+            
+        }
         
         
     }
