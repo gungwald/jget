@@ -24,5 +24,7 @@ then
 fi
 
 # Do the install.
-cp "$MY_DIR"/bin/jget /usr/local/bin
-cp "$MY_DIR"/classes/JGet.class /usr/local/classes
+/usr/bin/install -d /usr/local/bin
+/usr/bin/install -d /usr/local/share/java
+/usr/bin/install "$MY_DIR"/bin/jget /usr/local/bin
+/usr/bin/install "$MY_DIR"/classes/JGet.class /usr/local/share/java

@@ -7,11 +7,13 @@ if [ "$MY_DIR" = "." ]
 then
     MY_DIR=`pwd`
 fi
-CLS_DIR=`dirname "$MY_DIR"`/classes
+TOP_DIR=`dirname "$MY_DIR"`
+CLS_DIR="$TOP_DIR"/classes
+SHARE_JAVA_DIR="$TOP_DIR"/share/java
 
 # Search for main class file
 unset CLS_PATH
-for DIR in `pwd` "$MY_DIR" "$CLS_DIR"
+for DIR in `pwd` "$MY_DIR" "$CLS_DIR" "$SHARE_JAVA_DIR"
 do
     if [ -f "$DIR"/$MAIN_CLASS.class ]
     then
@@ -32,4 +34,4 @@ else
     JAVA=java
 fi
 
-"$JAVA" -classpath "$CLS_PATH" $MAIN_CLASS
+exec "$JAVA" -classpath "$CLS_PATH" "$MAIN_CLASS" "$@"

@@ -22,14 +22,20 @@ public class JGet {
      */
     public static void main(String[] args) {
         JGet jget = new JGet();
-        for (int i = 0; i < args.length; i++) {
-            try {
-                jget.get(args[i]);
+        if (args.length > 0) {
+            for (int i = 0; i < args.length; i++) {
+                try {
+                    jget.get(args[i]);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                    System.exit(EXIT_FAILURE);
+                }
             }
-            catch (Exception e) {
-                e.printStackTrace();
-                System.exit(EXIT_FAILURE);
-            }
+        }
+        else {
+            System.err.println("No URL provided");
+            System.exit(EXIT_FAILURE);
         }
     }
 
